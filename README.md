@@ -41,9 +41,6 @@ Tailwind CSS
 
 Clone Repo
 
-bash
-Copy
-Edit
 git clone https://github.com/YOUR_USERNAME/ai-challenge-assistant.git
 cd ai-challenge-assistant
 Frontend Setup
