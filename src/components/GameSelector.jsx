@@ -5,7 +5,7 @@ export default function GameSelector({ selectedGame, setSelectedGame, setChallen
     if (!selectedGame) return alert('Select a game first!');
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:5000/generate', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/generate`, {
         game: selectedGame,
       });
       setChallenge(response.data.challenge);
