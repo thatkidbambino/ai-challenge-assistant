@@ -5,8 +5,18 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// ✅ Allow Vercel frontend to access Render backend
+app.use(cors({
+  origin: 'https://ai-challenge-assistant.vercel.app',
+  methods: ['POST'],
+}));
+
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('API is live');
+});
 
 app.post('/generate', async (req, res) => {
   const { game } = req.body;
@@ -42,4 +52,5 @@ app.post('/generate', async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log('OpenRouter backend running on http://localhost:5000'));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`OpenRouter backend running on port ${PORT}`));
