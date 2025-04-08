@@ -6,10 +6,11 @@ dotenv.config();
 
 const app = express();
 
-// ✅ Allow Vercel frontend to access Render backend
 app.use(cors({
-  origin: 'https://ai-challenge-assistant.vercel.app',
-  methods: ['POST'],
+  origin: 'https://ai-challenge-assistant.vercel.app', // Replace with your Vercel frontend URL
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 
 app.use(express.json());
